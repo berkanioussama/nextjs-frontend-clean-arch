@@ -5,7 +5,6 @@ import { User } from "@/modules/user/domain/user.entity";
 import Link from "next/link";
 
 const Profile = ({user}: {user: User}) => {
-    console.log(user.image)
     return ( 
         <>
         <div className="relative rounded-full h-24 aspect-square overflow-hidden border">

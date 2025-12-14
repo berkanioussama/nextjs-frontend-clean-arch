@@ -1,26 +1,18 @@
 import { IUserAuthProviderRepo } from "../domain/IUser-authProvider.repo"
 import { User } from "@/modules/user/domain/user.entity"
-import { api } from "@/shared/infrastructure/api"
+import { findByAuthProviderIdAction } from "@/modules/user/infrastructure/users-authProvider.actions"
 
 export class UserAuthProviderRepo implements IUserAuthProviderRepo {
-    constructor(private token: string) {
-        if (!token) throw new Error("No authenticationtoken provided")
-    }
-
+    constructor() {}
+    
     async findById(id: string): Promise<User> {
-        const instance = await api(this.token)
-        const res = await instance.get(`/users/authProvider/${id}`)
-        if (res.data.status === 'error') {
-            throw new Error(res.data.error)
+        try {
+            return await findByAuthProviderIdAction(id)
+        } catch (error) {
+            throw new Error('Failed to find user')
         }
-        return res.data.data
     }
-    async findProfileById(id: string): Promise<void> {
-        const instance = await api(this.token)
-        const res = await instance.get(`/users/authProvider/${id}/profile`)
-        if (res.data.status === 'error') {
-            throw new Error(res.data.error)
-        }
-        return res.data.data
+    findProfileById(userAuthProviderId: string): Promise<void> {
+        throw new Error("Method not implemented.")
     }
 }
