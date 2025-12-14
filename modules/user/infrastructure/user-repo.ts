@@ -7,7 +7,11 @@ export class UserRepo implements IUserRepo {
 
     async edit({ id, user }: EditUser): Promise<User> {
         try {
-            return await editAction({ id, user })
+            const res = await editAction({ id, user })
+            if (res.status === 'error') {  
+                throw new Error(res.error)
+            }
+            return res.data
         } catch (error) {
             throw new Error('Failed to edit user')
         }
@@ -15,7 +19,11 @@ export class UserRepo implements IUserRepo {
     
     async findById(id: string): Promise<User> {
         try {
-            return await findByIdAction(id)
+            const res = await findByIdAction(id)
+            if (res.status === 'error') {  
+                throw new Error(res.error)
+            }
+            return res.data
         } catch (error) {
             throw new Error('Failed to find user')
         }

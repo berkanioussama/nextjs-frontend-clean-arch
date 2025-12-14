@@ -7,7 +7,11 @@ export class UserAuthProviderRepo implements IUserAuthProviderRepo {
     
     async findById(id: string): Promise<User> {
         try {
-            return await findByAuthProviderIdAction(id)
+            const res = await findByAuthProviderIdAction(id)
+            if (res.status === 'error') {  
+                throw new Error(res.error)
+            }
+            return res.data
         } catch (error) {
             throw new Error('Failed to find user')
         }
