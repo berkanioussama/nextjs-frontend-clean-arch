@@ -3,10 +3,12 @@ import { Button } from "@/shared/ui/components/ui/button";
 import { SignOutButton } from "@clerk/nextjs";
 import { User } from "@/modules/user/domain/user.entity";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp } from "@/shared/ui/lib/animations";
 
 const Profile = ({user}: {user: User}) => {
     return ( 
-        <>
+        <motion.div {...fadeUp()} className="flex flex-col gap-6 items-center justify-center">
         <div className="relative rounded-full h-24 aspect-square overflow-hidden border">
             <Image 
                 src={user.image} 
@@ -25,7 +27,7 @@ const Profile = ({user}: {user: User}) => {
             <Link href="/">
                 <Button>Back to home</Button>
             </Link>
-        </>    
+        </motion.div>    
     );
 }
  
