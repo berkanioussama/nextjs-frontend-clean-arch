@@ -1,13 +1,13 @@
 import { IUserRepo } from "@/modules/user/domain/IUser.repo";
 import { User, EditUser } from "@/modules/user/domain/user.entity";
-import { editAction, findByIdAction } from "./users.actions";
+import { editApi, findByIdApi } from "./users.api";
 
 export class UserRepo implements IUserRepo {
     constructor() {}
 
     async edit({ id, user }: EditUser): Promise<User> {
         try {
-            const res = await editAction({ id, user })
+            const res = await editApi({ id, user })
             if (res.status === 'error') {  
                 throw new Error(res.error)
             }
@@ -19,7 +19,7 @@ export class UserRepo implements IUserRepo {
     
     async findById(id: string): Promise<User> {
         try {
-            const res = await findByIdAction(id)
+            const res = await findByIdApi(id)
             if (res.status === 'error') {  
                 throw new Error(res.error)
             }

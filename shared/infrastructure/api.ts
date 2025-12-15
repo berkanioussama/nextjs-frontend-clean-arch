@@ -1,3 +1,4 @@
+'use server'
 import axios from 'axios'
 import { auth } from "@clerk/nextjs/server";
 

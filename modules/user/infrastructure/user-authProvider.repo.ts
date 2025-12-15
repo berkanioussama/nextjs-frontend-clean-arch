@@ -1,13 +1,13 @@
 import { IUserAuthProviderRepo } from "../domain/IUser-authProvider.repo"
 import { User } from "@/modules/user/domain/user.entity"
-import { findByAuthProviderIdAction } from "@/modules/user/infrastructure/users-authProvider.actions"
+import { findByAuthProviderIdApi, findProfileByAuthProviderIdApi } from "@/modules/user/infrastructure/users-authProvider.api"
 
 export class UserAuthProviderRepo implements IUserAuthProviderRepo {
     constructor() {}
     
     async findById(id: string): Promise<User> {
         try {
-            const res = await findByAuthProviderIdAction(id)
+            const res = await findByAuthProviderIdApi(id)
             if (res.status === 'error') {  
                 throw new Error(res.error)
             }
@@ -16,7 +16,15 @@ export class UserAuthProviderRepo implements IUserAuthProviderRepo {
             throw new Error('Failed to find user')
         }
     }
-    findProfileById(userAuthProviderId: string): Promise<void> {
-        throw new Error("Method not implemented.")
+    async findProfileById(id: string): Promise<any> {
+        try {
+            const res = await findProfileByAuthProviderIdApi(id);
+            if (res.status === 'error') {
+                throw new Error(res.error)
+            }
+            return res.data
+        } catch (error) {
+            throw new Error("Failed to find user profile");
+        }
     }
 }
