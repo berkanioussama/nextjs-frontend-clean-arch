@@ -1,6 +1,6 @@
 import { IUserProviderRepo } from "@/domain/user/IUser-provider.repo"
 import { User, FindUserByProvider } from "@/domain/user/user.entity"
-import { findByProviderIdApi, findProfileByProviderIdApi } from "@/infrastructure/user/users-provider.api"
+import { findByProviderIdApi, findProfileByProviderIdApi } from "@/infrastructure/user/user-provider.api"
 
 export class UserAuthProviderRepo implements IUserProviderRepo {
     constructor() {}

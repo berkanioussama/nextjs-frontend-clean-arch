@@ -5,7 +5,7 @@ export enum Role { USER = "user", ADMIN = "admin" }
 export const UserSchema = z.object({
   id: z.string().min(2, { message: "ID must be at least 2 characters." }),
   name: z.string().min(2, { message: "Username must be at least 2 characters." }),
-  authProviderId: z.string().min(2, { message: "Auth provider ID must be at least 2 characters." }),
+  providerId: z.string().min(2, { message: "Auth provider ID must be at least 2 characters." }),
   email: z.email({ message: "Invalid email address." }),
   image: z.string(),
   role: z.enum([Role.USER, Role.ADMIN], { message: `Role must be either '${Role.USER}' or '${Role.ADMIN}'` }),

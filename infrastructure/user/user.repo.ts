@@ -1,6 +1,6 @@
 import { IUserRepo } from "@/domain/user/IUser.repo";
 import { User, EditUser, FindUser } from "@/domain/user/user.entity";
-import { editApi, findByIdApi } from "@/infrastructure/user/users.api";
+import { editApi, findByIdApi } from "@/infrastructure/user/user.api";
 
 export class UserRepo implements IUserRepo {
     constructor() {}

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { UserAuthProviderRepo } from "@/infrastructure/user/user-provider.repo"
-import { FindUserByProviderIdUC } from "@/application/user/query/find-user-by-providerId.uc";
+import { FindUserByProviderIdUC } from "@/application/user/query/find-user-by-provider-id.uc";
 import { FindUserByProvider } from "@/domain/user/user.entity";
 
 export function useFindUserByProviderId({userProviderId}: FindUserByProvider) {
