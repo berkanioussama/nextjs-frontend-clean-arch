@@ -3,7 +3,7 @@ import { User, EditUser, UserSchema } from "@/modules/user/domain/user.entity"
 export class EditUserUC {
     constructor(private userRepo: IUserRepo) {}
 
-    async execute({ id, user }: EditUser): Promise<User> {
+    async execute({ userId, user }: EditUser): Promise<User> {
 
         const validatedUser = UserSchema.safeParse(user)
         if (!validatedUser.success) {
@@ -11,7 +11,7 @@ export class EditUserUC {
             throw new Error("Invalid user data");
         }
                 
-        const editedUser = await this.userRepo.edit({ id, user })
+        const editedUser = await this.userRepo.edit({ userId, user })
 
         const result = UserSchema.safeParse(editedUser)
         if (!result.success) {

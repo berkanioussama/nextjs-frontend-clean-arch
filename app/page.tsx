@@ -19,14 +19,16 @@ export default function Home() {
           className="text-4xl font-bold"
           {...fadeUp()}
         >
-            Home Page
+          Home Page
         </motion.h1>
         <motion.p className="text-lg" {...fadeUp(0.2)}>
           You can see this page without logging in
         </motion.p>
-        <SignInButton>
-          <Button>Sign in</Button>
-        </SignInButton>
+        {!user && (
+          <SignInButton>
+            <Button>Sign in</Button>
+          </SignInButton>
+        )}
         {user && (
           <>
             <Link href="/profile"><Button>Go to profile</Button></Link>

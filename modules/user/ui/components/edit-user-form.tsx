@@ -23,7 +23,7 @@ const EditUserForm = ({user}: {user: User}) => {
     })
 
     function onSubmit(values: NewUser) {
-        EditUser({ id: user.id, user: values}, {
+        EditUser({ userId: user.id, user: values}, {
             onSuccess: (data) => {
                 toast.success("User has been updated", {
                     description: `User ${data?.name} has been updated successfully`,

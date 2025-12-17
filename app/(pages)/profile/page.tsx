@@ -2,10 +2,10 @@
 import Page from "@/shared/ui/components/layout/page";
 import Container from "@/shared/ui/components/layout/container";
 import { useUser } from "@clerk/nextjs";
-import { useFindUserByAuthProviderId } from "@/modules/user/ui/hooks/use-find-user-by-authProviderId.hook";
+import { useFindUserByProviderId } from "@/modules/user/ui/hooks/use-find-user-by-authProviderId.hook";
 import Profile from "@/modules/user/ui/components/profile";
 import { Skeleton } from "@/shared/ui/components/ui/skeleton";
-
+import { FindUserByProvider } from "@/modules/user/domain/user.entity";
 const ProfilePage = () => {
 
     const { user } = useUser();
@@ -13,15 +13,15 @@ const ProfilePage = () => {
 
     return (
         <Page>
-            <ProfileSection id={user.id} />
+            <ProfileSection userProviderId={user.id} />
         </Page>
     );
 }
  
 export default ProfilePage;
 
-export const ProfileSection = ({id}: {id: string}) => {
-    const { data: userData, isLoading, error } = useFindUserByAuthProviderId(id);
+export const ProfileSection = ({userProviderId}: FindUserByProvider) => {
+    const { data: userData, isLoading, error } = useFindUserByProviderId({userProviderId});
     return (
         <Container className="min-h-svh flex flex-col gap-6 items-center justify-center">
             <h1 className="text-4xl font-bold">Profile Page</h1>

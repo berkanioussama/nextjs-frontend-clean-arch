@@ -8,12 +8,12 @@ export const useEditUser = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: async ({id, user}: EditUser) => {
+        mutationFn: async ({userId, user}: EditUser) => {
 
             const userRepo = new UserRepo()
             const editUserUC = new EditUserUC(userRepo)
 
-            return editUserUC.execute({id, user})
+            return editUserUC.execute({userId, user})
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['users'] });

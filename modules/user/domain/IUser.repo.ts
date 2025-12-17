@@ -1,6 +1,6 @@
-import { User, EditUser } from "@/modules/user/domain/user.entity";
+import { User, EditUser, FindUser } from "@/modules/user/domain/user.entity";
 
 export interface IUserRepo {
-  edit({id, user}: EditUser): Promise<User>
-  findById(id: string): Promise<User>
+  edit({userId, user}: EditUser): Promise<User>
+  findById({userId}: FindUser): Promise<User>
 }

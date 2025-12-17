@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query"
-import { UserAuthProviderRepo } from "@/modules/user/infrastructure/user-authProvider.repo"
-import { FindUserByAuthProviderIdUC } from "@/modules/user/application/query/find-user-by-authProviderId.uc";
+import { UserAuthProviderRepo } from "@/modules/user/infrastructure/user-provider.repo"
+import { FindUserByProviderIdUC } from "@/modules/user/application/query/find-user-by-providerId.uc";
+import { FindUserByProvider } from "@/modules/user/domain/user.entity";
 
-export function useFindUserByAuthProviderId(id: string) {
+export function useFindUserByProviderId({userProviderId}: FindUserByProvider) {
 
     return useQuery({
-        queryKey: ['user', id],
+        queryKey: ['user', userProviderId],
         queryFn: async () => {
             
             const repo = new UserAuthProviderRepo()
-            const findUserByIdUC = new FindUserByAuthProviderIdUC(repo)
-            return await findUserByIdUC.execute(id)
+            const findUserByIdUC = new FindUserByProviderIdUC(repo)
+            return await findUserByIdUC.execute({userProviderId})
         },
-        enabled: Boolean(id),
+        enabled: Boolean(userProviderId),
         staleTime: 1000 * 60,
     })
 }
