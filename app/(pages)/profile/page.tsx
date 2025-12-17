@@ -1,11 +1,11 @@
 'use client';
-import Page from "@/shared/ui/components/layout/page";
-import Container from "@/shared/ui/components/layout/container";
+import Page from "@/layout/shared/components/layout/page";
+import Container from "@/layout/shared/components/layout/container";
 import { useUser } from "@clerk/nextjs";
-import { useFindUserByProviderId } from "@/modules/user/ui/hooks/use-find-user-by-authProviderId.hook";
-import Profile from "@/modules/user/ui/components/profile";
-import { Skeleton } from "@/shared/ui/components/ui/skeleton";
-import { FindUserByProvider } from "@/modules/user/domain/user.entity";
+import { useFindUserByProviderId } from "@/layout/user/hooks/use-find-user-by-authProviderId.hook";
+import Profile from "@/layout/user/components/profile";
+import { Skeleton } from "@/layout/shared/components/ui/skeleton";
+import { FindUserByProvider } from "@/domain/user/user.entity";
 const ProfilePage = () => {
 
     const { user } = useUser();
