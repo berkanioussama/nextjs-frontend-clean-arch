@@ -1,12 +1,12 @@
 'use client'
-import Page from "@/layout/shared/components/layout/page";
-import Container from "@/layout/shared/components/layout/container";
-import { Button } from "@/layout/shared/components/ui/button";
+import Page from "@/shared/presentation/components/layout/page";
+import Container from "@/shared/presentation/components/layout/container";
+import { Button } from "@/shared/presentation/components/ui/button";
 import Link from "next/link";
 import { SignInButton, SignOutButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
 import { motion } from "motion/react";
-import { fadeUp } from "@/layout/shared/lib/animations";
+import { fadeUp } from "@/shared/presentation/lib/animations";
 
 export default function Home() {
 
