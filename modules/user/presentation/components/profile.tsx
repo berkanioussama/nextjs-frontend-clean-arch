@@ -24,6 +24,9 @@ const Profile = ({user}: {user: User}) => {
             <SignOutButton>
                 <Button variant="destructive">Log out</Button>
             </SignOutButton>
+            <Link href="/profile/edit">
+                <Button>Edit profile</Button>
+            </Link>
             <Link href="/">
                 <Button>Back to home</Button>
             </Link>
