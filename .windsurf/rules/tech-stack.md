@@ -5,7 +5,7 @@ trigger: always_on
 Tech stack
 
 - Nextjs v16
-- Bun
+- Bun v1.3
 - TypeScript v5
 - Clerk v6
 - shadcn/ui

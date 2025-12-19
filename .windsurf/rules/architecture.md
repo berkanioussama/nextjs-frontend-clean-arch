@@ -11,7 +11,9 @@ folder structure
 app/
   - (auth)/
   - (pages)/
-    - users/
+    - profile/
+      - edit/
+        - page.tsx
       - components/
       - page.tsx
     - globals.css
@@ -20,25 +22,26 @@ app/
 modules/
   user/
     - application/
-      - command/
-        - add-user.uc.ts
-      - query/
-        - find-all-users.uc.ts
+        - edit-user.uc.ts
+        - find-user-by-id.uc.ts
     - domain/
       - IUser.repo.ts
       - user-entity.ts
     - infrastructure/
       - user-repo.ts
-    - ui/
+      - user-api.ts
+    - presentation/
       - components/
-        - users-table.tsx
+        - edit-user-form.tsx
       - hooks/
-        use-add-user.hook.ts
+        use-edit-user.hook.ts
+        use-find-user-by-id.hook.ts
 shared/
   - infrastructure/
     - api.ts
-  - ui/
+  - presentation/
     - components/
+      - layout/
       - ui/
     - hooks/
     - lib/
