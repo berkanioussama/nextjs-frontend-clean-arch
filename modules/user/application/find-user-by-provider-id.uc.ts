@@ -1,3 +1,4 @@
+'use client'
 import { IUserProviderRepo } from "@/modules/user/domain/IUser-provider.repo"
 import { User, UserSchema, FindUserByProvider } from "@/modules/user/domain/user.entity"
 

@@ -1,17 +1,18 @@
+'use client'
 import { IUserRepo } from "@/modules/user/domain/IUser.repo"
-import { User, EditUser, UserSchema, addUserSchema } from "@/modules/user/domain/user.entity"
+import { User, EditUser, UserSchema, EditUserSchema } from "@/modules/user/domain/user.entity"
 export class EditUserUC {
     constructor(private userRepo: IUserRepo) {}
 
-    async execute({ userId, user }: EditUser): Promise<User> {
+    async execute({ userId, editUser }: EditUser): Promise<User> {
 
-        const validatedUser = addUserSchema.safeParse(user)
+        const validatedUser = EditUserSchema.safeParse(editUser)
         if (!validatedUser.success) {
             console.error('Validation failed:', validatedUser.error)
             throw new Error("Invalid user data");
         }
                 
-        const editedUser = await this.userRepo.edit({ userId, user })
+        const editedUser = await this.userRepo.edit({ userId, editUser })
 
         const result = UserSchema.safeParse(editedUser)
         if (!result.success) {

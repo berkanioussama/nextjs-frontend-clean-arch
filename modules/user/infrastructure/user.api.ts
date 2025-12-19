@@ -4,9 +4,9 @@ import { api } from "@/shared/infrastructure/api"
 import { EditUser, FindUser } from "@/modules/user/domain/user.entity"
 import { ApiResponse } from "@/shared/infrastructure/api-response"
 
-export async function editApi({ userId, user }: EditUser): Promise<ApiResponse> {
+export async function editApi({ userId, editUser }: EditUser): Promise<ApiResponse> {
     const instance = await api()
-    const res = await instance.put(`/users/${userId}`, user)
+    const res = await instance.put(`/users/${userId}`, editUser)
     return res.data
 }
 

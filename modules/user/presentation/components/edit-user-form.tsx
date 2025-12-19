@@ -2,7 +2,7 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/presentation/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { editUserSchema, NewUser } from "@/modules/user/domain/user.entity";
+import { EditUserSchema, EditFormUserSchema, NewEditUser, NewEditFormUser } from "@/modules/user/domain/user.entity";
 import { Input } from "@/shared/presentation/components/ui/input";
 import { Button } from "@/shared/presentation/components/ui/button";
 import { User } from "@/modules/user/domain/user.entity";
@@ -12,8 +12,8 @@ import { useEditUser } from "@/modules/user/presentation/hooks/use-edit-user.hoo
 const EditUserForm = ({user}: {user: User}) => {
     const { mutate: EditUser, isPending } = useEditUser();
 
-    const form = useForm<NewUser>({
-        resolver: zodResolver(editUserSchema),
+    const form = useForm<NewEditFormUser>({
+        resolver: zodResolver(EditFormUserSchema),
         defaultValues: {
             name: user.name,
             email: user.email,
@@ -21,8 +21,11 @@ const EditUserForm = ({user}: {user: User}) => {
         },
     })
 
-    function onSubmit(values: NewUser) {
-        EditUser({ userId: user.id, user: values}, {
+    function onSubmit(values: NewEditFormUser) {
+        EditUser({ userId: user.id, editUser: {
+            ...values,
+            providerId: user.providerId,
+        }}, {
             onSuccess: (data) => {
                 toast.success("User has been updated", {
                     description: `User ${data?.name} has been updated successfully`,
@@ -41,7 +44,7 @@ const EditUserForm = ({user}: {user: User}) => {
         });
     }
 
-    const inputs: { field: keyof NewUser; name: string; placeHolder: string; type: string }[] = [
+    const inputs: { field: keyof NewEditFormUser; name: string; placeHolder: string; type: string }[] = [
         { field: 'name', name: 'Name', placeHolder: 'Your full name', type: 'text' },
         { field: 'email', name: 'Email', placeHolder: 'Your email', type: 'email' },
         { field: 'image', name: 'Image URL', placeHolder: 'Your image URL', type: 'text' }

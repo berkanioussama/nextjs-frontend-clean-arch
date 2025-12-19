@@ -1,3 +1,4 @@
+'use client'
 import { useQuery } from "@tanstack/react-query"
 import { UserAuthProviderRepo } from "@/modules/user/infrastructure/user-provider.repo"
 import { FindUserByProviderIdUC } from "@/modules/user/application/find-user-by-provider-id.uc";

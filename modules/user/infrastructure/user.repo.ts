@@ -5,9 +5,9 @@ import { editApi, findByIdApi } from "@/modules/user/infrastructure/user.api";
 export class UserRepo implements IUserRepo {
     constructor() {}
 
-    async edit({ userId, user }: EditUser): Promise<User> {
+    async edit({ userId, editUser }: EditUser): Promise<User> {
         try {
-            const res = await editApi({ userId, user })
+            const res = await editApi({ userId, editUser })
             if (res.status === 'error') {  
                 throw new Error(res.error)
             }

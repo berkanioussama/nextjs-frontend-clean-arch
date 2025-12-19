@@ -1,3 +1,4 @@
+'use client'
 import { IUserRepo } from "@/modules/user/domain/IUser.repo"
 import { User, UserSchema, FindUser } from "@/modules/user/domain/user.entity"
 

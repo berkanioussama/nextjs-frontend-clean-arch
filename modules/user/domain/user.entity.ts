@@ -15,13 +15,17 @@ export const UserSchema = z.object({
 export type User = z.infer<typeof UserSchema>
 export const UsersSchema = z.array(UserSchema);
 /*-----*****-----*/
-export const addUserSchema = UserSchema.omit({ 
+export const EditUserSchema = UserSchema.omit({ 
   id: true, role: true, createdAt: true, updatedAt: true 
 });
-export type NewUser = z.infer<typeof addUserSchema>
-/*-----*****-----*/
-export const editUserSchema = addUserSchema
-export interface EditUser { userId: string; user: NewUser}
+export type NewEditUser = z.infer<typeof EditUserSchema>
+export interface EditUser { userId: string; editUser: NewEditUser}
+
+export const EditFormUserSchema = UserSchema.omit({ 
+  id: true, providerId: true, role: true, createdAt: true, updatedAt: true 
+});
+export type NewEditFormUser = z.infer<typeof EditFormUserSchema>
+export interface EditFormUser { userId: string; editFormUser: NewEditFormUser}
 /*-----*****-----*/
 export interface FindUser { userId: string}
 export interface FindUserByProvider { userProviderId: string}

@@ -1,4 +1,4 @@
-
+'use client'
 import { useQuery } from "@tanstack/react-query"
 import { UserRepo } from "@/modules/user/infrastructure/user.repo"
 import { FindUserByIdUC } from "@/modules/user/application/find-user-by-id.uc"
