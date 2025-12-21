@@ -2,11 +2,13 @@
 trigger: always_on
 ---
 
-Architecture
+# Architecture
 
-use Clean Architecture
+We are building a Frontend Next.js app
+Architecture: Clean Architecture
+backend is separate API
 
-folder structure
+# Folder structure:
 
 app/
   - (auth)/

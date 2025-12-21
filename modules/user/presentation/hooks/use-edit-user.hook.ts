@@ -13,7 +13,7 @@ export const useEditUser = () => {
             const userRepo = new UserRepo()
             const editUserUC = new EditUserUC(userRepo)
 
-            return editUserUC.execute({userId, editUser})
+            return await editUserUC.execute({userId, editUser})
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['user'] });

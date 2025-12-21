@@ -2,7 +2,7 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/presentation/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EditUserSchema, EditFormUserSchema, NewEditUser, NewEditFormUser } from "@/modules/user/domain/user.entity";
+import { EditFormUserSchema, NewEditFormUser } from "@/modules/user/domain/user.entity";
 import { Input } from "@/shared/presentation/components/ui/input";
 import { Button } from "@/shared/presentation/components/ui/button";
 import { User } from "@/modules/user/domain/user.entity";
