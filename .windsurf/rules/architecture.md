@@ -4,18 +4,20 @@ trigger: always_on
 
 # Architecture
 
-We are building a Frontend Next.js app
-Architecture: Clean Architecture
-backend is separate API
+We are building a Frontend Next.js app, backend is a separate API.
+Architecture: Clean Architecture.
+
+- Application layer contains use cases and business rules.
+- Domain layer contains entities and repository interfaces, must not depend on any other layer.
+- Infrastructure layer contains concrete implementations of repositories, depends on Domain.
+- Presentation layer contains UI components and hooks, depends on Application.
 
 # Folder structure:
 
 app/
   - (auth)/
   - (pages)/
-    - profile/
-      - edit/
-        - page.tsx
+    - pageName/
       - components/
       - page.tsx
     - globals.css
@@ -24,27 +26,16 @@ app/
 modules/
   user/
     - application/
-        - edit-user.uc.ts
-        - find-user-by-id.uc.ts
     - domain/
-      - IUser.repo.ts
-      - user-entity.ts
     - infrastructure/
-      - user-repo.ts
-      - user-api.ts
     - presentation/
       - components/
-        - edit-user-form.tsx
       - hooks/
-        use-edit-user.hook.ts
-        use-find-user-by-id.hook.ts
+  otherModule/
 shared/
   - infrastructure/
-    - api.ts
   - presentation/
     - components/
-      - layout/
-      - ui/
     - hooks/
     - lib/
 public/
