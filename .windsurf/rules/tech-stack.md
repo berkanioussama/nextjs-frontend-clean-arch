@@ -15,3 +15,5 @@ trigger: always_on
 - Zod v4
 - Tanstack React Query v5
 - Axios v1
+
+do not use old or deprecated patterns
