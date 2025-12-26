@@ -16,7 +16,6 @@ export async function api() {
     instance.interceptors.request.use(config => {
         return config;
     }, error => {
-        console.error('Request Error:', error);
         return Promise.reject(error);
     });
 
@@ -24,11 +23,10 @@ export async function api() {
     instance.interceptors.response.use(response => {
         return response;
     }, error => {
-        console.error('Response Error:', {
-            status: error.response?.status,
-            data: error.response?.data,
-            message: error.response?.data.message,
-        });
+        if (error.response?.data?.error) {
+            const customError = new Error(error.response.data.error);
+            return Promise.reject(customError);
+        }
         return Promise.reject(error);
     });
 

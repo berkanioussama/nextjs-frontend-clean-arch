@@ -5,8 +5,8 @@ import { User, UserSchema, FindUser } from "@/modules/user/domain/user.entity"
 export class FindUserByIdUC {
     constructor( private readonly userRepo: IUserRepo ) {}
 
-    async execute({userId}: FindUser): Promise<User> {
-        const user = await this.userRepo.findById({userId});
+    async execute(id: FindUser): Promise<User> {
+        const user = await this.userRepo.findById(id);
         
         const result = UserSchema.safeParse(user)
         if (!result.success) {

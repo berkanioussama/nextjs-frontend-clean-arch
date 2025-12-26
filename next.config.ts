@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: 'images.clerk.dev',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+        pathname: '/**',
+      }
     ],
     dangerouslyAllowSVG: true,
   },

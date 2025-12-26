@@ -4,14 +4,14 @@ import { api } from "@/shared/infrastructure/api"
 import { ApiResponse } from "@/shared/infrastructure/api-response"
 import { FindUserByProvider } from "@/modules/user/domain/user.entity"
 
-export async function findByProviderIdApi({userProviderId}: FindUserByProvider): Promise<ApiResponse> {
+export async function findByProviderIdApi({providerId}: FindUserByProvider): Promise<ApiResponse> {
     const instance = await api()
-    const res = await instance.get(`/users/provider/${userProviderId}`)
+    const res = await instance.get(`/users/provider/${providerId}`)
     return res.data
 }
 
-export async function findProfileByProviderIdApi({userProviderId}: FindUserByProvider): Promise<ApiResponse> {
+export async function findProfileByProviderIdApi({providerId}: FindUserByProvider): Promise<ApiResponse> {
     const instance = await api()
-    const res = await instance.get(`/users/provider/${userProviderId}/profile`)
+    const res = await instance.get(`/users/provider/${providerId}/profile`)
     return res.data
 }

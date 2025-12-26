@@ -5,9 +5,9 @@ import { findByProviderIdApi, findProfileByProviderIdApi } from "@/modules/user/
 export class UserAuthProviderRepo implements IUserProviderRepo {
     constructor() {}
     
-    async findById({userProviderId}: FindUserByProvider): Promise<User> {
+    async findById(providerId: FindUserByProvider): Promise<User> {
         try {
-            const res = await findByProviderIdApi({userProviderId})
+            const res = await findByProviderIdApi(providerId)
             if (res.status === 'error') {  
                 throw new Error(res.error)
             }
@@ -16,9 +16,9 @@ export class UserAuthProviderRepo implements IUserProviderRepo {
             throw new Error('Failed to find user')
         }
     }
-    async findProfileById({userProviderId}: FindUserByProvider): Promise<any> {
+    async findProfileById(providerId: FindUserByProvider): Promise<any> {
         try {
-            const res = await findProfileByProviderIdApi({userProviderId});
+            const res = await findProfileByProviderIdApi(providerId);
             if (res.status === 'error') {
                 throw new Error(res.error)
             }

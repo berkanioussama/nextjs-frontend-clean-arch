@@ -11,7 +11,7 @@ import { User } from "@/modules/user/domain/user.entity";
 const EditProfile = () => {
     const { user } = useUser();
     if (!user) return null;
-    const { data: userData, isLoading, error } = useFindUserByProviderId({userProviderId: user.id});
+    const { data: userData, isLoading, error } = useFindUserByProviderId({providerId: user.id});
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
@@ -20,9 +20,13 @@ const EditProfile = () => {
         <Page>
             <Container className="mb-6">
                 <h1 className="text-3xl font-bold">Edit Profile Page</h1>
+            </Container>
+
+            <EditUserSection user={userData} />
+
+            <Container className="mt-12">
                 <Link href="/profile"><Button>Back to profile</Button></Link>
             </Container>
-            <EditUserSection user={userData} />
         </Page> 
     );
 }

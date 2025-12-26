@@ -13,15 +13,15 @@ const ProfilePage = () => {
 
     return (
         <Page>
-            <ProfileSection userProviderId={user.id} />
+            <ProfileSection providerId={user.id} />
         </Page>
     );
 }
  
 export default ProfilePage;
 
-export const ProfileSection = ({userProviderId}: FindUserByProvider) => {
-    const { data: userData, isLoading, error } = useFindUserByProviderId({userProviderId});
+export const ProfileSection = (providerId: FindUserByProvider) => {
+    const { data: userData, isLoading, error } = useFindUserByProviderId(providerId);
     return (
         <Container className="min-h-svh flex flex-col gap-6 items-center justify-center">
             <h1 className="text-4xl font-bold">Profile Page</h1>

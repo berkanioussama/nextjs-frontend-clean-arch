@@ -1,20 +1,20 @@
 'use client'
-import { useQuery } from "@tanstack/react-query"
-import { UserAuthProviderRepo } from "@/modules/user/infrastructure/user-provider.repo"
+import { useQuery } from "@tanstack/react-query";
+import { UserAuthProviderRepo } from "@/modules/user/infrastructure/user-provider.repo";
 import { FindUserByProviderIdUC } from "@/modules/user/application/find-user-by-provider-id.uc";
 import { FindUserByProvider } from "@/modules/user/domain/user.entity";
 
-export function useFindUserByProviderId({userProviderId}: FindUserByProvider) {
+export function useFindUserByProviderId(providerId: FindUserByProvider) {
 
     return useQuery({
-        queryKey: ['user', userProviderId],
+        queryKey: ['user', providerId],
         queryFn: async () => {
             
             const repo = new UserAuthProviderRepo()
             const findUserByIdUC = new FindUserByProviderIdUC(repo)
-            return await findUserByIdUC.execute({userProviderId})
+            return await findUserByIdUC.execute(providerId)
         },
-        enabled: Boolean(userProviderId),
+        enabled: Boolean(providerId),
         staleTime: 1000 * 60,
     })
 }

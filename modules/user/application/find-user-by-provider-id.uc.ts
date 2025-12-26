@@ -5,8 +5,8 @@ import { User, UserSchema, FindUserByProvider } from "@/modules/user/domain/user
 export class FindUserByProviderIdUC {
     constructor( private readonly userProviderRepo: IUserProviderRepo ) {}
 
-    async execute({userProviderId}: FindUserByProvider): Promise<User> {
-        const user = await this.userProviderRepo.findById({userProviderId});
+    async execute(providerId: FindUserByProvider): Promise<User> {
+        const user = await this.userProviderRepo.findById(providerId);
         
         const result = UserSchema.safeParse(user)
         if (!result.success) {
