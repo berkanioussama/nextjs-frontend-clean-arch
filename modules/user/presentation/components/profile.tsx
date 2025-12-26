@@ -8,8 +8,8 @@ import { fadeUp } from "@/shared/presentation/lib/animations";
 
 const Profile = ({user}: {user: User}) => {
     return ( 
-        <motion.div {...fadeUp()} className="flex flex-col gap-6 items-center justify-center">
-        <div className="relative rounded-full h-24 aspect-square overflow-hidden border">
+        <motion.div {...fadeUp()} className="flex flex-col gap-5 items-center justify-center">
+        <div className="relative rounded-full h-32 aspect-square overflow-hidden border-2">
             <Image 
                 src={user.image} 
                 alt={user.name} 
@@ -17,16 +17,16 @@ const Profile = ({user}: {user: User}) => {
                 className="object-cover"
             />
         </div>
-            <p>Name: {user.name}</p>
-            <p>Email: {user.email}</p>
+            <p className="text-2xl font-bold">{user.name}</p>
+            <p>{user.email}</p>
             <p>Role: {user.role}</p>
             <p>Registered At: {user.createdAt.toDateString()}</p>
-            <SignOutButton>
-                <Button variant="destructive">Log out</Button>
-            </SignOutButton>
             <Link href="/profile/edit">
                 <Button>Edit profile</Button>
             </Link>
+            <SignOutButton>
+                <Button variant="destructive">Log out</Button>
+            </SignOutButton>
             <Link href="/">
                 <Button>Back to home</Button>
             </Link>
