@@ -10,6 +10,7 @@ import { toast } from "sonner"
 import { useEditUser } from "@/modules/user/presentation/hooks/use-edit-user.hook";
 
 const EditUserForm = ({user}: {user: User}) => {
+    
     const { mutate: EditUser, isPending } = useEditUser();
 
     const form = useForm<EditedUserForm>({

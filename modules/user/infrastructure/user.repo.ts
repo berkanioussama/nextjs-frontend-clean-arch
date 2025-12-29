@@ -1,6 +1,6 @@
 import { IUserRepo } from "@/modules/user/domain/IUser.repo";
-import { User, EditedUser, FindUser } from "@/modules/user/domain/user.entity";
-import { editApi, findByIdApi } from "@/modules/user/infrastructure/user.api";
+import { User, EditedUser, FindUser, FindUserByProvider } from "@/modules/user/domain/user.entity";
+import { editApi, findByIdApi, findByProviderIdApi, findProfileByProviderIdApi } from "@/modules/user/infrastructure/user.api";
 
 export class UserRepo implements IUserRepo {
     constructor() {}
@@ -29,4 +29,26 @@ export class UserRepo implements IUserRepo {
         }
     }
 
+    async findByProviderId(providerId: FindUserByProvider): Promise<User> {
+            try {
+                const res = await findByProviderIdApi(providerId)
+                if (res.status === 'error') {  
+                    throw new Error(res.error)
+                }
+                return res.data
+            } catch (error) {
+                throw new Error('Failed to find user')
+            }
+        }
+        async findProfileByProviderId(providerId: FindUserByProvider): Promise<any> {
+            try {
+                const res = await findProfileByProviderIdApi(providerId);
+                if (res.status === 'error') {
+                    throw new Error(res.error)
+                }
+                return res.data
+            } catch (error) {
+                throw new Error("Failed to find user profile");
+            }
+        }
 }
