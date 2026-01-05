@@ -4,40 +4,20 @@ trigger: always_on
 
 # Architecture
 
-We are building a Frontend Next.js app, backend is a separate API.
-Architecture: Clean Architecture.
+We are building a Frontend Next.js app using clean architecture
 
-- Application layer contains use cases and business rules.
-- Domain layer contains entities and repository interfaces, must not depend on any other layer.
-- Infrastructure layer contains concrete implementations of repositories, depends on Domain.
-- Presentation layer contains UI components and hooks, depends on Application.
+- ***Application***: contains use cases and business rules.
+- ***Domain***: contains entities and business rules, repository interfaces, must not depend on any other layer.
+- ***Infrastructure***: contains concrete implementations of repositories, depends on Domain.
+- ***Presentation***: contains UI components and hooks, depends on Application.
 
-# Folder structure:
+---
 
-app/
-  ├── (auth)/
-  ├── (pages)/
-  │     └── pageName/
-  │           ├── components/
-  │           └── page.tsx
-  ├── globals.css
-  ├── layout.tsx
-  └── page.tsx
-modules/
-  ├── user/
-  │  ├── application/
-  │  ├── domain/
-  │  ├── infrastructure/
-  │  └── presentation/
-  │       ├── components/
-  │       └── hooks/
-  └── otherModule/
-shared/
-  ├── infrastructure/
-  └── presentation/
-    ├── components/
-    ├── hooks/
-    └── lib/
-public/
-.env
-proxy.ts
+## Technology Stack
+
+- **Runtime**: Bun v1.3 
+- **Frontend**: Next.js 16 + TypeScript + Tailwind CSS + shadcn/ui + lucide-react v0.5
+- **Data Fetching**: Tanstack React Query v5 + Axios v1
+- **Auth**: Clerk v6
+- **Validation**: Zod v4
+- **Hosting / Deployment**: Vercel
